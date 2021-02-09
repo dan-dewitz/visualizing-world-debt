@@ -13,7 +13,9 @@ ratio["ratio_float"] = ratio["value"].astype(float)
 ratio["ratio"] = ratio["ratio_float"] * 0.001
 del ratio["ratio_float"]
 
-# DEBT
+# DEBT bar chart
+# --------------
+
 sorted_debt = world.sort_values(by="debt", ascending=False)
 
 fig, ax = plt.subplots(figsize=(12, 15))
@@ -40,7 +42,9 @@ sns.despine(ax=ax, fig=fig, right=True, bottom=True)
 
 plt.show()
 
-# GDP
+# GDP bar chart
+# -------------
+
 sorted_gdp = world.sort_values(by="gdp", ascending=False)
 
 fig, ax = plt.subplots(figsize=(12, 15))
@@ -67,7 +71,9 @@ sns.despine(ax=ax, fig=fig, right=True, bottom=True)
 
 plt.show()
 
-# Debt-to-GDP
+# Debt-to-GDP bar chart
+# ---------------------
+
 sorted_ratio = world.sort_values(by="debt_v_gdp", ascending=False)
 
 fig, ax = plt.subplots(figsize=(12, 15))
@@ -85,6 +91,10 @@ ax.tick_params(labelsize=30)
 sns.despine(ax=ax, fig=fig, right=True, bottom=True)
 
 plt.show()
+
+
+# bee swarm plot
+# --------------
 
 # make bee swarm plot with box plot overlay
 ax = sns.boxplot(y=ratio.ratio, color="grey", fliersize=0.0, linewidth=0.8, width=0.32)
