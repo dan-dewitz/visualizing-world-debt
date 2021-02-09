@@ -1,11 +1,9 @@
-# %%
 import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib.ticker import FuncFormatter
 import seaborn as sns
 sns.set_style("whitegrid")
 
-# %%
 world = pd.read_csv("/Users/dan/Documents/talk/viz-the-debt/data/world_debt.csv", index_col=None)
 ratio = pd.read_csv("/Users/dan/Documents/talk/viz-the-debt/data/gdp_v_debt.csv", index_col=None)
 
@@ -14,7 +12,6 @@ ratio = pd.read_csv("/Users/dan/Documents/talk/viz-the-debt/data/gdp_v_debt.csv"
 ratio["ratio_float"] = ratio["value"].astype(float)
 ratio["ratio"] = ratio["ratio_float"] * 0.001
 del ratio["ratio_float"]
-#%%
 
 # DEBT
 sorted_debt = world.sort_values(by="debt", ascending=False)
@@ -42,7 +39,6 @@ ax.tick_params(labelsize=30)
 sns.despine(ax=ax, fig=fig, right=True, bottom=True)
 
 plt.show()
-#%%
 
 # GDP
 sorted_gdp = world.sort_values(by="gdp", ascending=False)
@@ -70,7 +66,6 @@ ax.tick_params(labelsize=30)
 sns.despine(ax=ax, fig=fig, right=True, bottom=True)
 
 plt.show()
-#%%
 
 # Debt-to-GDP
 sorted_ratio = world.sort_values(by="debt_v_gdp", ascending=False)
@@ -90,7 +85,6 @@ ax.tick_params(labelsize=30)
 sns.despine(ax=ax, fig=fig, right=True, bottom=True)
 
 plt.show()
-#%%
 
 # make bee swarm plot with box plot overlay
 ax = sns.boxplot(y=ratio.ratio, color="grey", fliersize=0.0, linewidth=0.8, width=0.32)
@@ -169,4 +163,3 @@ ax.set_ylabel("Debt / GDP", fontsize=16)
 
 plt.show()
 
-#%%
