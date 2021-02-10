@@ -1,6 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib.ticker import FuncFormatter
+from matplotlib.ticker import PercentFormatter
 import seaborn as sns
 sns.set_style("whitegrid")
 
@@ -85,8 +86,9 @@ color = [
 
 sns.barplot(ax=ax, x=sorted_ratio.debt_v_gdp * 100, y=sorted_ratio.country, palette=color)
 
+ax.xaxis.set_major_formatter(PercentFormatter())
 ax.set_ylabel("")
-ax.set_xlabel("Debt / GDP", fontsize=35)
+ax.set_xlabel("Percent of Debt-to-GDP", fontsize=35)
 ax.tick_params(labelsize=30)
 sns.despine(ax=ax, fig=fig, right=True, bottom=True)
 
@@ -95,6 +97,7 @@ plt.show()
 
 # bee swarm plot
 # --------------
+
 
 # make bee swarm plot with box plot overlay
 ax = sns.boxplot(y=ratio.ratio, color="grey", fliersize=0.0, linewidth=0.8, width=0.32)
@@ -155,9 +158,9 @@ plt.annotate(
 
 
 plt.annotate(
-    "Canada",
-    xy=(0, ratio["ratio"][ratio["country"] == "Canada"]),
-    xytext=(0.15, ratio["ratio"][ratio["country"] == "Canada"] - 1),
+    "Russia",
+    xy=(0, ratio["ratio"][ratio["country"] == "Russia"]),
+    xytext=(0.15, ratio["ratio"][ratio["country"] == "Russia"] - 1),
     # Shrink the arrow to avoid occlusion
     arrowprops={
         "facecolor": "black",
@@ -168,8 +171,11 @@ plt.annotate(
     fontsize=16,
 )
 
+ax.yaxis.set_major_formatter(PercentFormatter())
+
+
 sns.despine(ax=ax, right=True, bottom=True, left=True, top=True)
-ax.set_ylabel("Debt / GDP", fontsize=16)
+ax.set_ylabel("Percent of Debt-to-GDP", fontsize=16)
 
 plt.show()
 
